@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Notes.ViewModels"
+             x:Class="Notes.Views.NotePage"
+             Title="Note"
+             BackgroundColor="Olive">
+    
+    
+    <ContentPage.BindingContext>
+        <viewModels:IPNoteViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10" Margin="5">
+        <Editor x:Name="TextEditor"
+                TextColor="Black"
+                Placeholder="Enter your note"
+                PlaceholderColor="Black"
+                Text="{Binding Text}"
+                HeightRequest="100" />
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+            <Button Text="IP.Save" BackgroundColor="Red" BorderColor="Black" BorderWidth="2"
+                    Command="{Binding SaveCommand}"/>
+
+            <Button Grid.Column="1"
+                    Text="IP.Delete" BackgroundColor="Red" BorderColor="Black" BorderWidth="2"
+                    Command="{Binding DeleteCommand}"/>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
